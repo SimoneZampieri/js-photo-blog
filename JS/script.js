@@ -1,7 +1,7 @@
 //stabiliamo l'endpoint e il container in cui verranno inserite le card
-const endpoint = 'https://jsonplaceholder.typicode.com/photos?_limit=6'
+const endpoint = "https://jsonplaceholder.typicode.com/photos?_limit=6";
 
-const container = document.getElementById('loaderCont')
+const container = document.getElementById("loaderCont");
 
 //dopo aver visualizzato l'api con thunder client, questo è il risultato:
 
@@ -54,25 +54,20 @@ const container = document.getElementById('loaderCont')
 
 //per prima cosa stabiliamo la chiamata con axios
 
- axios.get(endpoint)
-   .then(response => {
-     container.innerHTML = ''
-     response.data.forEach(polaroid => printCard(polaroid))
-  })
-
+axios.get(endpoint).then((response) => {
+  container.innerHTML = "";
+  response.data.forEach((polaroid) => printCard(polaroid));
+});
 
 //denomino la funzione ''printCard'' e come parametro le passo ''card''
 
- function printCard(polaroid){
+function printCard(polaroid) {
+  //la nostra polaroid va ora destrutturata
+  const { albumId, id, title, url, thumbnailUrl } = polaroid;
 
-    //la nostra polaroid va ora destrutturata
-    const {albumId, id, title, url, thumbnailUrl} = polaroid;
-    
-    //ora possiamo inserirle
+  //ora possiamo inserirle
 
-    container.innerHTML += 
-
-        `<div class="col-lg-4 col-md-6 col-sm-12 mt-4" id="colonna">
+  container.innerHTML += `<div class="col-lg-4 col-md-6 col-sm-12 mt-4" id="colonna">
         <div class="puntina">
             <img src="./img/pin.svg" alt="Puntina">
         </div> 
@@ -82,6 +77,5 @@ const container = document.getElementById('loaderCont')
         </div>
         <p>${title}</p>
         </div>
-        </div>`
+        </div>`;
 }
-

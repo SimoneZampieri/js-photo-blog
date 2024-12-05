@@ -17,8 +17,9 @@ body{
 } 
 
 h1 {
-  font-size: 2rem;
+  font-size: 4rem;
   margin-bottom: 20px;
+  font-style: italic;
 }
 
 /* Creo la polaroid */
@@ -26,9 +27,11 @@ h1 {
 .polaroid-card {
     background-color: #fff;
     width: 250px;
+    border: 10px solid white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     text-align: center;
+    position: relative;
 }
   
 .image {

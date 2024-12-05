@@ -22,6 +22,9 @@ function printCard(polaroid){
     
     //ora possiamo inserirle
 
-
+    container.innerHTML += `<div class="polaroid-card">
+                        <div class="image"><img src="${url}" alt="Placeholder"></div>
+                        <p>${title}</p>
+                    </div>`
 }
 

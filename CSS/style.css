@@ -22,14 +22,10 @@ h1 {
 }
 
 /* Creo la polaroid */
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-  }
-  
+
   .polaroid-card {
     background-color: #fff;
+    width: 300px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     text-align: center;

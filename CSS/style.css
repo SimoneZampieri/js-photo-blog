@@ -22,16 +22,25 @@ h1 {
   font-style: italic;
 }
 
+.containerr{
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
 /* Creo la polaroid */
+
+#colonna{
+    position: relative;
+}
 
 .polaroid-card {
     background-color: #fff;
-    width: 250px;
+    height: 350px;
     border: 10px solid white;
+    padding: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     text-align: center;
-    position: relative;
 }
   
 .image {
@@ -49,5 +58,11 @@ p {
     font-size: 0.9rem;
     color: #333;
 }
-  
 
+/* imposto la puntina sulle polaroid */
+
+.puntina{
+    position: absolute;
+    top: -15px;
+    left: 40%;
+}

@@ -54,24 +54,34 @@ const container = document.getElementById('loaderCont')
 
 //per prima cosa stabiliamo la chiamata con axios
 
-axios.get(endpoint)
-  .then(response => {
-    container.innerHTML = ''
-    response.data.forEach(polaroid => printCard(polaroid))
+ axios.get(endpoint)
+   .then(response => {
+     container.innerHTML = ''
+     response.data.forEach(polaroid => printCard(polaroid))
   })
 
 
 //denomino la funzione ''printCard'' e come parametro le passo ''card''
-function printCard(polaroid){
+
+ function printCard(polaroid){
 
     //la nostra polaroid va ora destrutturata
     const {albumId, id, title, url, thumbnailUrl} = polaroid;
     
     //ora possiamo inserirle
 
-    container.innerHTML += `<div class="polaroid-card">
-                        <div class="image"><img src="${url}" alt="Placeholder"></div>
-                        <p>${title}</p>
-                    </div>`
+    container.innerHTML += 
+
+        `<div class="col-lg-4 col-md-6 col-sm-12 mt-4" id="colonna">
+        <div class="puntina">
+            <img src="./img/pin.svg" alt="Puntina">
+        </div> 
+        <div class="polaroid-card ">
+        <div class="image">
+        <img src="${url}" alt="Placeholder">
+        </div>
+        <p>${title}</p>
+        </div>
+        </div>`
 }
 

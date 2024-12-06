@@ -57,6 +57,19 @@ const container = document.getElementById("loaderCont");
 axios.get(endpoint).then((response) => {
   container.innerHTML = "";
   response.data.forEach((polaroid) => printCard(polaroid));
+  const polaroidCards = document.querySelectorAll('.polaroid-card');
+
+//aggiungo un event listener ad ogni card
+  polaroidCards.forEach((card) => {
+    card.addEventListener('click', () => {
+      //trovo l'immagine all'interno della card
+      const image = card.querySelector('.image img');
+      if(image){
+        const imageUrl = image.src;
+        showOverlay(imageUrl)
+      }
+    })
+  })
 });
 
 //denomino la funzione ''printCard'' e come parametro le passo ''card''
@@ -71,7 +84,7 @@ function printCard(polaroid) {
         <div class="puntina">
             <img src="./img/pin.svg" alt="Puntina">
         </div> 
-        <div class="polaroid-card ">
+        <div class="polaroid-card" id="polaroid-${id}">
         <div class="image">
         <img src="${url}" alt="Placeholder">
         </div>
@@ -80,33 +93,27 @@ function printCard(polaroid) {
         </div>`;
 }
 
-
 //dopo aver aggiunto la card, dobbiamo aggiungere inoltre una funzione che permetta di aprire e chiudere l'overlay.
 
-function showOverlay(){
-  const overlay = document.getElementById('overlay');
+function showOverlay(url) {
 
-  //selezioniamo un'immagine casuale
-
-  const randomPic = 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Sushi_platter.jpg/1200px-Sushi_platter.jpg';
+  const overlay = document.getElementById("overlay");
 
   //ora va impostata nell'html
-  const randomImage = document.getElementById('randomImage');
-  randomImage.src = randomPic;
+  const randomImage = document.getElementById("randomImage");
+  randomImage.src = url;
 
   //e ora possiamo mostrare l'overlay
-  overlay.classList.remove('d-none')
- }
+  overlay.classList.remove("d-none");
+}
 
 //creiamo ora una funzione per chiudere l'overlay
 
-function closeOverlay(){
-  const overlay = document.getElementById('overlay');
-  overlay.classList.add('d-none')
+function closeOverlay() {
+  const overlay = document.getElementById("overlay");
+  overlay.classList.add("d-none");
 }
 
 //event listener per la chiusura dell'overlay
 
-document.getElementById('closeOverlay').addEventListener('click', closeOverlay);
-
-//a questo punto, va modificata la funzione per stampare le polaroid, in modo tale che se ne verrà cliccata una si potrà vedere l'overlay
+document.getElementById("closeOverlay").addEventListener("click", closeOverlay);

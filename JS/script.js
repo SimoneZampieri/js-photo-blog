@@ -57,19 +57,19 @@ const container = document.getElementById("loaderCont");
 axios.get(endpoint).then((response) => {
   container.innerHTML = "";
   response.data.forEach((polaroid) => printCard(polaroid));
-  const polaroidCards = document.querySelectorAll('.polaroid-card');
+  const polaroidCards = document.querySelectorAll(".polaroid-card");
 
-//aggiungo un event listener ad ogni card
+  //aggiungo un event listener ad ogni card
   polaroidCards.forEach((card) => {
-    card.addEventListener('click', () => {
+    card.addEventListener("click", () => {
       //trovo l'immagine all'interno della card
-      const image = card.querySelector('.image img');
-      if(image){
+      const image = card.querySelector(".image img");
+      if (image) {
         const imageUrl = image.src;
-        showOverlay(imageUrl)
+        showOverlay(imageUrl);
       }
-    })
-  })
+    });
+  });
 });
 
 //denomino la funzione ''printCard'' e come parametro le passo ''card''
@@ -96,7 +96,6 @@ function printCard(polaroid) {
 //dopo aver aggiunto la card, dobbiamo aggiungere inoltre una funzione che permetta di aprire e chiudere l'overlay.
 
 function showOverlay(url) {
-
   const overlay = document.getElementById("overlay");
 
   //ora va impostata nell'html

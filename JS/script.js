@@ -72,7 +72,7 @@ axios.get(endpoint).then((response) => {
   });
 });
 
-//denomino la funzione ''printCard'' e come parametro le passo ''card''
+//denomino la funzione ''printCard'' e come parametro le passo ''polaroid''
 
 function printCard(polaroid) {
   //la nostra polaroid va ora destrutturata

@@ -55,8 +55,9 @@ const container = document.getElementById("loaderCont");
 //per prima cosa stabiliamo la chiamata con axios
 
 axios.get(endpoint).then((response) => {
+  //svuota il contenitore
   container.innerHTML = "";
-  response.data.forEach((polaroid) => printCard(polaroid));
+  response.data.forEach((polaroid) => printCard(polaroid)); //genera una polaroid per ogni oggetto
   const polaroidCards = document.querySelectorAll(".polaroid-card");
 
   //aggiungo un event listener ad ogni card
@@ -65,7 +66,9 @@ axios.get(endpoint).then((response) => {
       //trovo l'immagine all'interno della card
       const image = card.querySelector(".image img");
       if (image) {
+        //ottengo l'url dell'immagine
         const imageUrl = image.src;
+        //mostro l'overlay con la stessa
         showOverlay(imageUrl);
       }
     });
@@ -100,6 +103,8 @@ function showOverlay(url) {
 
   //ora va impostata nell'html
   const randomImage = document.getElementById("randomImage");
+
+  //impostiamo l'immagine dell'overlay
   randomImage.src = url;
 
   //e ora possiamo mostrare l'overlay
